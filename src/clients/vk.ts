@@ -28,7 +28,7 @@ type VkClientInfo = {
 
 type VkCallbackEventMessageNew = VkCallbackEvent<{
   message: VkMessage
-  clientInfo: VkClientInfo
+  client_info: VkClientInfo
 }>
 
 const vkCallbackEventMessageNewDecoder = JsonDecoder.object<VkCallbackEventMessageNew>(
@@ -36,12 +36,12 @@ const vkCallbackEventMessageNewDecoder = JsonDecoder.object<VkCallbackEventMessa
     type: JsonDecoder.string,
     object: JsonDecoder.object<{
       message: VkMessage,
-      clientInfo: VkClientInfo
+      client_info: VkClientInfo
     }>({
       message: JsonDecoder.object({
         text: JsonDecoder.string
       }, 'VkMessage'),
-      clientInfo: JsonDecoder.object({
+      client_info: JsonDecoder.object({
         lang_id: JsonDecoder.number
       }, 'VkClientInfo')
     }, 'VkCallbackMessageNewObject'),
