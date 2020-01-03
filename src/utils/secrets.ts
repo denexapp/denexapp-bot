@@ -5,6 +5,7 @@ dotenv.config({ path: '.env' })
 const parseString = (name: string): string => {
   const variable = process.env[name]
   if (typeof variable === 'undefined') {
+    console.error(`Variable ${name} has wrong value: ${variable}`)
     process.exit(1)
   }
   return variable
@@ -13,6 +14,7 @@ const parseString = (name: string): string => {
 const parseInteger = (name: string): number => {
   const variable = Number.parseInt(parseString(name))
   if (isNaN(variable)) {
+    console.error(`Variable ${name} has wrong value: ${variable}`)
     process.exit(1)
   }
   return variable
