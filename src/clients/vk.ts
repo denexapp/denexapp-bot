@@ -65,7 +65,7 @@ const vkMiddleware: Middleware = async ctx => {
 
   // Check is it valid callback
   try {
-    vkCallback = await vkCallbackDecoder.decodePromise(ctx.body)
+    vkCallback = await vkCallbackDecoder.decodePromise(ctx.request.body)
   } catch (e) {
     console.log(`Invalid body format recieved:\n${ctx.body}`)
     return
