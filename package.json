@@ -1,0 +1,32 @@
+{
+  "name": "denexapp-bot",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denexapp/denexapp-bot.git"
+  },
+  "author": "Denis Mukhametov <denis.mukhametov@gmail.com> (https://denexapp.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/denexapp/denexapp-bot/issues"
+  },
+  "homepage": "https://github.com/denexapp/denexapp-bot#readme",
+  "devDependencies": {
+    "@types/koa": "^2.11.0",
+    "@types/koa-json": "^2.0.18",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "koa": "^2.11.0",
+    "koa-json": "^2.0.2",
+    "ts.data.json": "^1.0.0"
+  }
+}
