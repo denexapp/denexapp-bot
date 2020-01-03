@@ -68,7 +68,7 @@ const vkMiddleware: Middleware = async ctx => {
     vkCallback = await vkCallbackDecoder.decodePromise(ctx.request.body)
   } catch (e) {
     console.log(`Invalid body format recieved:\n${e}`)
-    console.log(`Recieved body:\n${ctx.request.body}`)
+    console.log(`Recieved body:\n${JSON.stringify(ctx.request.body)}`)
     return
   }
 
@@ -99,7 +99,7 @@ const vkMiddleware: Middleware = async ctx => {
       newMessage = await vkCallbackEventMessageNewDecoder.decodePromise(ctx.request.body)
     } catch (e) {
       console.log(`Invalid body format recieved (message_new format expected):\n${e}`)
-      console.log(`Recieved body:\n${ctx.request.body}`)
+      console.log(`Recieved body:\n${JSON.stringify(ctx.request.body)}`)
       return
     }
 
