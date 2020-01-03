@@ -1,7 +1,7 @@
 import Koa from 'koa'
 import { Port } from './utils/secrets'
 import BodyParser from 'koa-bodyparser'
-import vkMiddleware from './clients/vk'
+import vkCallbackMiddleware from './clients/vkCallbackMiddleware'
 
 const koa = new Koa()
 koa.use(BodyParser({
@@ -9,6 +9,6 @@ koa.use(BodyParser({
   strict: true
 }))
 
-koa.use(vkMiddleware)
+koa.use(vkCallbackMiddleware)
 
 koa.listen(Port)

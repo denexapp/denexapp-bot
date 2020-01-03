@@ -60,7 +60,7 @@ const vkCallbackDecoder = JsonDecoder.object<VkCallback>(
   'VkCallback'
 )
 
-const vkMiddleware: Middleware = async ctx => {
+const vkCallbackMiddleware: Middleware = async ctx => {
   let vkCallback: VkCallback
 
   // Check is it valid callback
@@ -109,4 +109,4 @@ const vkMiddleware: Middleware = async ctx => {
   }
 }
 
-export default vkMiddleware
+export default vkCallbackMiddleware
