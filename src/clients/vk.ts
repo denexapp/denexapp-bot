@@ -95,7 +95,7 @@ const vkMiddleware: Middleware = async ctx => {
   if (vkCallback.type === 'message_new') {
     let newMessage: VkCallbackEventMessageNew
     try {
-      newMessage = await vkCallbackEventMessageNewDecoder.decodePromise(ctx.body)
+      newMessage = await vkCallbackEventMessageNewDecoder.decodePromise(ctx.request.body)
     } catch (e) {
       console.log(`Invalid body format recieved (message_new format expected):\n${e}`)
       return
