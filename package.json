@@ -20,11 +20,13 @@
   "homepage": "https://github.com/denexapp/denexapp-bot#readme",
   "devDependencies": {
     "@types/koa": "^2.11.0",
+    "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-json": "^2.0.18",
+    "@types/koa__router": "^8.0.2",
     "typescript": "^3.7.4"
   },
   "dependencies": {
-    "@types/koa-bodyparser": "^4.3.0",
+    "@koa/router": "^8.0.5",
     "dotenv": "^8.2.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",

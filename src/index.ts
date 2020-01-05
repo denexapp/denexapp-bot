@@ -2,13 +2,22 @@ import Koa from 'koa'
 import { Port } from './utils/secrets'
 import BodyParser from 'koa-bodyparser'
 import vkCallbackMiddleware from './clients/vkCallbackMiddleware'
+import Router from '@koa/router'
 
 const koa = new Koa()
-koa.use(BodyParser({
+const router = new Router()
+const bodyParser = BodyParser({
   enableTypes: ['json'],
   strict: true
-}))
+})
 
-koa.use(vkCallbackMiddleware)
+router
+  .get('/vk-callback', vkCallbackMiddleware)
+  .use(bodyParser)
+
+koa
+  .use(router.routes())
+  .use(router.allowedMethods())
+  .use(vkCallbackMiddleware)
 
 koa.listen(Port)
