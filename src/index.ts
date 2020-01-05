@@ -18,6 +18,5 @@ router
 koa
   .use(router.routes())
   .use(router.allowedMethods())
-  .use(vkCallbackMiddleware)
 
 koa.listen(Port)
