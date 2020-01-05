@@ -1,6 +1,7 @@
 import { Middleware } from 'koa'
 import { JsonDecoder } from 'ts.data.json'
-import { VkConfirmationKey, VkSecretKey, VkGroupId } from '../utils/secrets'
+import { VkConfirmationKey, VkSecretKey, VkGroupId } from './utils/secrets'
+import handleMessage from './commands/handleMessage'
 
 interface VkCallback {
   type: string
@@ -18,6 +19,7 @@ interface VkCallbackEvent<O extends object> extends VkCallback {
 
 type VkMessage = {
   text: string
+  from_id: number
   // ...
 }
 
@@ -39,7 +41,8 @@ const vkCallbackEventMessageNewDecoder = JsonDecoder.object<VkCallbackEventMessa
       client_info: VkClientInfo
     }>({
       message: JsonDecoder.object({
-        text: JsonDecoder.string
+        text: JsonDecoder.string,
+        from_id: JsonDecoder.number
       }, 'VkMessage'),
       client_info: JsonDecoder.object({
         lang_id: JsonDecoder.number
@@ -103,9 +106,9 @@ const vkCallbackMiddleware: Middleware = async ctx => {
       return
     }
 
-    const { text } = newMessage.object.message
+    const { text, from_id } = newMessage.object.message
 
-    console.log(text)
+    await handleMessage(text, from_id)
   }
 }
 

@@ -1,22 +1,29 @@
 import Koa from 'koa'
 import { Port } from './utils/secrets'
 import BodyParser from 'koa-bodyparser'
-import vkCallbackMiddleware from './clients/vkCallbackMiddleware'
+import vkCallbackMiddleware from './vkCallbackMiddleware'
 import Router from '@koa/router'
+import { initVkClient } from './clients/vk'
 
-const koa = new Koa()
-const router = new Router()
-const bodyParser = BodyParser({
-  enableTypes: ['json'],
-  strict: true
-})
+const main = async () => {
+  const koa = new Koa()
+  const router = new Router()
+  const bodyParser = BodyParser({
+    enableTypes: ['json'],
+    strict: true
+  })
 
-router
-  .use(bodyParser)
-  .post('/vk-callback', vkCallbackMiddleware)
+  await initVkClient()
 
-koa
-  .use(router.routes())
-  .use(router.allowedMethods())
+  router
+    .use(bodyParser)
+    .post('/vk-callback', vkCallbackMiddleware)
 
-koa.listen(Port)
+  koa
+    .use(router.routes())
+    .use(router.allowedMethods())
+
+  koa.listen(Port)
+}
+
+main()
