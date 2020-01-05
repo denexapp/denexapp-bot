@@ -12,8 +12,8 @@ const bodyParser = BodyParser({
 })
 
 router
-  .post('/vk-callback', vkCallbackMiddleware)
   .use(bodyParser)
+  .post('/vk-callback', vkCallbackMiddleware)
 
 koa
   .use(router.routes())
