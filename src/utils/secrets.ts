@@ -23,4 +23,5 @@ const parseInteger = (name: string): number => {
 export const VkConfirmationKey = parseString('VkConfirmationKey')
 export const VkSecretKey = parseString('VkSecretKey')
 export const VkGroupId = parseInteger('VkGroupId')
+export const VKGroupAccessToken = parseString('VKGroupAccessToken')
 export const Port = parseInteger('Port')
